@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1> Nom de l'observation : {{ observation.name }}</h1>
+</br>
+<img src="{{ asset('uploads/pictures/' ~ observation.picture) }}">
+
+<h2> Description de l'observation:</h2>
+<p> {{ observation.observationDescription }}</p>
+
+    <h2> Auteur : {{ observation.user.username }}</h2>
+
+    <h1> Commentaires:</h1>
+
+    {%  for comment in comments %}
+        <p> auteur du commentaire: {{ comment.user.username }}</p>
+        <p> Contenu du commentaire: {{ comment.commentContent }}</p>
+        <p> date du commentaire : {{ comment.commentDate|date("m/d/Y") }}</p><hr/>
+        {%  endfor %}
+
+    <h1> Postez votre commentaire: </h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+    {{ form_end(form) }}
+{%  endblock %}

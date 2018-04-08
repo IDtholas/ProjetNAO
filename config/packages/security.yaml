@@ -1,0 +1,29 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        our_db_provider:
+                    entity:
+                        class: App\Entity\User
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                path:   /logout
+                target: /
+
+    access_control:
+    encoders:
+            App\Entity\User : bcrypt
+
+    role_hierarchy:
+            ROLE_USER_ADVANCED:       ROLE_USER_BASIC
+            ROLE_ADMIN:         ROLE_USER_ADVANCED
+
+

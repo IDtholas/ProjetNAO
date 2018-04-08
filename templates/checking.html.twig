@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <H1> Page de vérification des observations</H1>
+    {% for observation in unverifiedObs %}
+        <a href="{{ path('verifPage', {'id' : observation.id}) }}"> Nom de l'observation: {{ observation.name }}</a>
+        <hr/>
+
+    {% endfor %}
+{%  endblock %}

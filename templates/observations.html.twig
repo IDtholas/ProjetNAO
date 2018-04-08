@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h3>Mes observations : *nbTotal*</h3>
+    <ul>
+        <li><h4><a href="{{ path('addObservation') }}">Ajouter une observation</a></h4></li>
+        <li><h4>Gérer mes observations.</h4></li>
+    </ul>
+
+    <H1> Liste des observations</H1>
+    {% for observation in listobs %}
+        <a href="{{ path('observationPage', {'id' : observation.id}) }}"> Nom de l'observation: {{ observation.name }}</a>
+        </br>
+
+        {% endfor %}
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Association des Oiseaux{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <style>
+                #map {
+                    height: 25%;
+                    width: 25%;
+                }
+                html, body {
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                }
+        </style>
+
+    </head>
+    <body>
+    <header>
+        <H1> ASSO DES OISEAUX</H1>
+        <ul>
+            <li><a href="{{ path('index') }}">Accueil</a></li>
+            <li><a href="{{ path('observation') }}">Observations</a></li>
+            <li> <a href="{{ path('verif') }}">Confirmation d'observation</a></li>
+            <li><a href="{{ path('presentation') }}">Présentation de l'assocation</a></li>
+            <li><a href="{{ path('contact') }}">Nous contacter</a></li>
+            <li><a href="{{ path('account') }}">gestion compte utilisateur</a></li>
+        </ul>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <p>Salut  {{ app.user.username }} !! <ul><li><a href="{{ path('logout') }}">se déconnecter</a></li></ul></p>
+
+            {% else %}
+
+                <ul>
+                    <li><a href="{{ path('login') }}">Vous avez déjà un compte? ->Conectez-vous</a></li>
+                    <li><a href="{{ path('sign-up') }}">Vous n'avez pas de compte? ->Sign-Up</a></li>
+
+                </ul>
+
+        {% endif %}
+    </header>
+        {% block body %}{% endblock %}
+    <footer>
+        <h1>Footer du site</h1>
+        <a href="{{ path('administration') }}">Interface d'administration</a>
+    </footer>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h2> Page d'accueil du site</h2>
+<p> Bonjour et bienvenue blablabla</p>
+
+    <h3>
+        <ul>
+            <li>Nombre d'utilisateurs amateurs:</li>
+            <li>Nombre d'observations:</li>
+            <li>Nombre d'utilisateur pro: </li>
+        </ul></h3>
+
+<h3> CARTE DES OBS</h3>
+    <div id="map"></div>
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <h3> Quand connecté:</h3>
+    <ul>
+        <li>
+            <h4> Les dernières observations (les 10 dernières)</h4>
+        </li>
+        <li>
+            <h4> Mes dernières observations(les 5 dernières)</h4>
+        </li>
+        <li>
+            <h4>Les derniers commentaires sur mes observations (les 5 derniers commentaires.</h4>
+        </li>
+    </ul>
+{% endif %}
+    <script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 48.8063971, lng: 2.2947716999999557},
+                zoom: 8,
+                mapTypeId: 'terrain'
+
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn0i6xFXgzAPMFFHQ9zb56vq21CjAqUrE&callback=initMap"
+            async defer></script>
+
+{% endblock %}
+

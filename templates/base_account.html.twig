@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1> Page de gestion de compte utilisateur.</h1>
+<ul>
+    <li><a href="{{ path('personal_data') }}">Informations Personnelles </a></li>
+    <li><a href="{{ path('observation') }}">Gestion de mes observations</a></li>
+    <li><a href="{{ path('password_change')}}"> Changer mon mot de passe </a></li>
+    <li><a href="{{ path('delete_account')}}"> Supprimer mon compte </a></li>
+</ul>
+{% block content %}{% endblock %}
+{% endblock %}

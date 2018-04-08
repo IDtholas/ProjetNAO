@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <H1> Voici la liste des observations à vérifier</H1>
+    <h2> Nom de l'observation : {{ observation.name }}</h2>
+    </br>
+    <img src="{{ asset('uploads/pictures/' ~ observation.picture) }}">
+
+    <h2> Description de l'observation:</h2>
+    <p> {{ observation.observationDescription }}</p>
+
+    <h3> Auteur : {{ observation.user.username }}</h3>
+
+    <a href="{{ path('verifValidated',{'id' : observation.id}) }}"> Cette Observation est valide</a>
+    <a href="{{ path('verifEdited',{'id' : observation.id}) }}"> Je corrige cette observation</a>
+    <a href="{{ path('verifDeleted',{'id' : observation.id}) }}"> Cette observation n'est pas rattrapable -> à détruire</a>
+
+{% endblock %}
