@@ -22,8 +22,12 @@ class ObservationType extends AbstractType
                 'class' => Species::class,
                 'label' => 'Espèce d\'oiseau',
                 'choice_label' => function ($species) {
-                    return $species->getNomVernaculaire() . ' / ' . $species->getNomDeReference() .'"';
-                    },
+                    if($species->getNomVernaculaire() !== '')
+                    {
+                        return $species->getNomVernaculaire();}
+                    else{
+                        return '--------------------';
+                    }},
                     'expanded' => false,
                     'multiple' => false))
         ;

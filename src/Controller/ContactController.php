@@ -9,12 +9,13 @@
 namespace App\Controller;
 
 
+use App\Controller\Interfaces\ContactControllerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
 
-class ContactController
+class ContactController implements ContactControllerInterface
 {
 
     private $twig;

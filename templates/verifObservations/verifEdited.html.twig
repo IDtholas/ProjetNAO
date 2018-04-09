@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1> Nom de l'observation : {{ observation.name }}</h1>
+    </br>
+    <img src="{{ asset('uploads/pictures/' ~ observation.picture) }}">
+    {{ form_start(form) }}
+
+    <p>{{ form_row(form.observationDescription, {'value' : observation.observationDescription}) }}</p></br>
+    <p>{{ form_row(form.species, {'placeholder' : observation.species.nomVernaculaire}) }}</p></br>
+    <p>{{ form_row(form.proComment) }}</p></br>
+
+
+    <input type="submit" />
+    {{ form_end(form) }}
+{% endblock %}

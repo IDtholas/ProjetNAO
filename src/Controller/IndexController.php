@@ -9,11 +9,12 @@
 namespace App\Controller;
 
 
+use App\Controller\Interfaces\IndexControllerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
-class IndexController
+class IndexController implements IndexControllerInterface
 {
     private $twig;
 
