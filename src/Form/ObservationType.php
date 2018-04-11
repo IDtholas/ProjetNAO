@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use Doctrine\DBAL\Types\FloatType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,6 +20,8 @@ class ObservationType extends AbstractType
             ->add('name', TextType::class)
             ->add('picture', FileType::class)
             ->add('observationDescription', TextType::class)
+            ->add('lat', NumberType::class)
+            ->add('lng', NumberType::class)
             ->add('species', EntityType::class, array (
                 'class' => Species::class,
                 'label' => 'Espèce d\'oiseau',

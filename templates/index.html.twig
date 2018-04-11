@@ -27,16 +27,39 @@
         </li>
     </ul>
 {% endif %}
+    {% for observation in observations %}
+        <input type="Hidden" id="{{ observation.id }}lat" value="{{ observation.lat }}">
+        <input type="Hidden" id="{{ observation.id }}lng" value="{{ observation.lng }}">
+        <input type="Hidden" id="{{ observation.id }}name" value="{{ observation.name }}">
+{% endfor %}
     <script>
         var map;
         function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 48.8063971, lng: 2.2947716999999557},
-                zoom: 8,
-                mapTypeId: 'terrain'
+            var myLatLng = {lat: -25.363, lng: 131.044};
 
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: {lat: 48, lng: 2.2}
             });
+
+            {% for observation in observations %}
+
+            var name = document.getElementById('{{ observation.id|json_encode|raw }}name').value;
+            var lat = document.getElementById('{{ observation.id|json_encode|raw }}lat').value;
+            var lng = document.getElementById('{{ observation.id|json_encode|raw }}lng').value;
+            var latlng = {lat: parseFloat(lat), lng: parseFloat(lng)};
+
+            var marker{{ observation.id|json_encode|raw }} = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                title: name
+            });
+
+            {% endfor %}
         }
+
+
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn0i6xFXgzAPMFFHQ9zb56vq21CjAqUrE&callback=initMap"
             async defer></script>

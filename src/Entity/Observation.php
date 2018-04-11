@@ -28,7 +28,16 @@ class Observation
      */
     private $observationDate;
 
-    private $coords;
+
+    /**
+     * @ORM\Column(type="float", nullable = true)
+     */
+    private $lat;
+
+    /**
+     * @ORM\Column(type="float", nullable = true)
+     */
+    private $lng;
 
     /**
      * @ORM\Column(type="string")
@@ -122,18 +131,37 @@ class Observation
     /**
      * @return mixed
      */
-    public function getCoords()
+    public function getLat()
     {
-        return $this->coords;
+        return $this->lat;
     }
 
     /**
-     * @param mixed $coords
+     * @param mixed $lat
      */
-    public function setCoords($coords): void
+    public function setLat($lat): void
     {
-        $this->coords = $coords;
+        $this->lat = $lat;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLng()
+    {
+        return $this->lng;
+    }
+
+    /**
+     * @param mixed $lng
+     */
+    public function setLng($lng): void
+    {
+        $this->lng = $lng;
+    }
+
+
+
 
     /**
      * @return mixed
